@@ -2,7 +2,7 @@ export const EmployeeData = [
     {
         id : 1,
         name : 'Edward Kobby',
-        role : 'Developer',
+        role : 'Support',
         projects : 3,
         email : 'edward@mail.com',
         phone : '0201234567',
@@ -26,7 +26,7 @@ export const EmployeeData = [
     {
         id : 3,
         name : 'Edward Kobby',
-        role : 'Developer',
+        role : 'Support',
         projects : 3,
         email : 'edward@mail.com',
         phone : '0201234567',

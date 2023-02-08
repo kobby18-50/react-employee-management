@@ -38,12 +38,38 @@ const Employee = () => {
       <EmployeeCard />
 
       {/* Employee table */}
-
+    {/* radio options */}
      <div className="flex space-x-10">
-      <input type="radio" className="radio w-[20px] h-[20px]" />
-     <h1 className="font-bold mt-5 cursor-pointer ml-14">All Employees</h1>
-      <h1 className="font-bold mt-5 cursor-pointer"> Developers</h1>
-      <h1 className="font-bold mt-5 cursor-pointer"> Support</h1>
+      <div className="flex space-x-4 mt-5  ml-14">
+      <input 
+      onChange = {(event) => setFilter(event.target.value)}
+      type="radio"
+      name="filter"
+      value="all"
+       className="radio w-[20px] h-[20px]" />
+     <h1 className="font-bold  cursor-pointer">All Employees</h1>
+      </div>
+
+      <div className="flex space-x-4 mt-5  ml-14">
+      <input 
+      onChange = {(event) => setFilter(event.target.value)}
+      type="radio"
+      name="filter"
+      value = "developer"
+       className="radio w-[20px] h-[20px]" />
+     <h1 className="font-bold  cursor-pointer">Developers</h1>
+      </div>
+
+      <div className="flex space-x-4 mt-5  ml-14">
+      <input
+      onChange = {(event) => setFilter(event.target.value)}
+      type="radio"
+      name="filter"
+      value="support"
+       className="radio w-[20px] h-[20px]" />
+     <h1 className="font-bold  cursor-pointer">Support</h1>
+      </div>
+      
      </div>
 
       <div className="overflow-x-auto ml-14">
@@ -62,7 +88,13 @@ const Employee = () => {
           </thead>
 
           <tbody>
-            {EmployeeData.map((employee, index) => (
+            {EmployeeData.filter((val)=>{
+              if (filter === "all"){
+                return val;
+              }else if (val.role.toLocaleLowerCase().includes(filter.toLowerCase())){
+                return val;
+              }
+            }).map((employee, index) => (
               <tr key={index}>
                 <th>{employee.id}</th>
                 <td>{employee.name}</td>
