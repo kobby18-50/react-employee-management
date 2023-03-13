@@ -3,11 +3,13 @@ import { EmployeeData } from "../../data/EmployeeData";
 import { FiEdit2 } from "react-icons/fi";
 import { AiFillDelete } from "react-icons/ai";
 import { BsSpeedometer2 } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const Employee = () => {
   const [filter,setFilter] = useState('all')
+
+  const navigate = useNavigate()
   return (
     <main>
       <div className="h-[8%] pt-10 pl-14">
@@ -105,11 +107,13 @@ const Employee = () => {
                 <td>{employee.projects}</td>
 
                 <td className="flex space-x-10">
-                  <Link to={`/admin/dashboard/employee/${employee.id}`}>
-                    <span className="text-warning btn">
+                 
+                    <span
+                    onClick={() => {navigate(`/admin/dashboard/employee/${employee.id}`)}}
+                     className="text-warning btn">
                       <FiEdit2 />
                     </span>
-                  </Link>
+                 
                   <span className="text-error btn">
                     <AiFillDelete />
                   </span>
